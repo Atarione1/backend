@@ -1,9 +1,0 @@
--- CreateTable
-CREATE TABLE "Comments" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "description" TEXT NOT NULL,
-    "userId" INTEGER NOT NULL,
-    "taskId" INTEGER NOT NULL,
-    CONSTRAINT "Comments_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT "Comments_taskId_fkey" FOREIGN KEY ("taskId") REFERENCES "Task" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
-);

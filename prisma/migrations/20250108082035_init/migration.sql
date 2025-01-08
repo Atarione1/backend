@@ -15,6 +15,16 @@ CREATE TABLE "Project" (
 );
 
 -- CreateTable
+CREATE TABLE "Comments" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "description" TEXT NOT NULL,
+    "userId" INTEGER NOT NULL,
+    "taskId" INTEGER NOT NULL,
+    CONSTRAINT "Comments_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "Comments_taskId_fkey" FOREIGN KEY ("taskId") REFERENCES "Task" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
 CREATE TABLE "Task" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
@@ -27,7 +37,4 @@ CREATE TABLE "Task" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Task_projectId_key" ON "Task"("projectId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Task_userId_key" ON "Task"("userId");
+CREATE UNIQUE INDEX "User_name_key" ON "User"("name");
